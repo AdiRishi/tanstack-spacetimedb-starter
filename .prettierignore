@@ -1,0 +1,28 @@
+# Gitignore copy
+node_modules
+.DS_Store
+dist
+dist-ssr
+*.local
+count.txt
+.env
+.nitro
+.tanstack
+.wrangler
+.output
+.vinxi
+todos.json
+stats.html
+
+# AI Stuff
+.agents
+.claude/settings.local.json
+
+# Spacetime DB generated code
+src/module_bindings
+
+# Prettier specific
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+**/*.gen.ts

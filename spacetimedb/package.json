@@ -1,0 +1,11 @@
+{
+  "name": "tanstack-start-spacetimedb-server",
+  "private": true,
+  "version": "0.0.1",
+  "dependencies": {
+    "spacetimedb": "^2.0.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}

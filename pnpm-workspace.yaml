@@ -1,0 +1,7 @@
+packages:
+  - spacetimedb
+
+onlyBuiltDependencies:
+  - esbuild
+  - msw
+  - unrs-resolver

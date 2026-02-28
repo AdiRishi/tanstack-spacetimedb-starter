@@ -1,0 +1,15 @@
+node_modules
+.DS_Store
+dist
+dist-ssr
+*.local
+# Remove .env.local when you have secrets to commit
+!.env.local
+count.txt
+.env
+.nitro
+.tanstack
+.wrangler
+.output
+.vinxi
+todos.json

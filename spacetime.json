@@ -1,0 +1,9 @@
+{
+  "server": "local",
+  "database": "tanstack-start-spacetimedb",
+  "module-path": "./spacetimedb",
+  "generate": [{ "language": "typescript", "out-dir": "./src/module_bindings" }],
+  "dev": {
+    "run": "pnpm run dev:web"
+  }
+}
