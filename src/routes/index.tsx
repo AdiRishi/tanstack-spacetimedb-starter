@@ -15,7 +15,7 @@ function App() {
   const [persons] = useSpacetimeDBQuery(tables.person)
   const [name, setName] = useState('')
 
-  const submitPerson = (event: SubmitEvent<HTMLFormElement>) => {
+  const submitPerson = async (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault()
 
     const nextName = name.trim()
@@ -23,7 +23,7 @@ function App() {
       return
     }
 
-    addPerson({ name: nextName })
+    await addPerson({ name: nextName })
     setName('')
   }
 

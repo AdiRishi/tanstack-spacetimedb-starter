@@ -7,6 +7,9 @@
   "rules": {
     "react/react-in-jsx-scope": "off"
   },
+  "options": {
+    "typeAware": true
+  },
   "env": {
     "builtin": true,
     "browser": true,
