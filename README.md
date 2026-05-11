@@ -14,7 +14,7 @@
 - **End-to-end type safety** — server schema changes auto-generate client bindings, no manual API layer
 - **[Tailwind CSS v4](https://tailwindcss.com/) + [shadcn/ui](https://ui.shadcn.com/)** — utility-first styling with accessible component primitives
 - **React 19** — latest React with TanStack Query and Router devtools
-- **Strict TypeScript, ESLint, Prettier** — opinionated DX with import and Tailwind class sorting
+- **Strict TypeScript, Oxfmt, Oxlint** — fast DX with import, package, and Tailwind class sorting
 - **[Claude Code](https://claude.ai/code) skills** — AI-assisted development with context-aware guidance
 
 ## Prerequisites
@@ -100,6 +100,12 @@ Changes sync in real-time — no REST endpoints, no GraphQL, no manual cache inv
 | `pnpm check`              | Format + lint with auto-fix             |
 | `pnpm spacetime:generate` | Regenerate client bindings              |
 | `pnpm spacetime:publish`  | Publish module to SpacetimeDB maincloud |
+
+## Testing
+
+Frontend tests use Vitest, jsdom, React Testing Library, jest-dom matchers, and user-event.
+SpacetimeDB React hooks are mocked in component tests so `pnpm test` stays fast and does not need a
+running database.
 
 ## Resources
 

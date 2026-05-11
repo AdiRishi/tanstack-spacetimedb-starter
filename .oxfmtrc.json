@@ -1,0 +1,36 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "semi": false,
+  "singleQuote": true,
+  "trailingComma": "all",
+  "printWidth": 100,
+  "sortImports": true,
+  "sortPackageJson": true,
+  "sortTailwindcss": {
+    "stylesheet": "./src/global-styles/tailwind.css"
+  },
+  "ignorePatterns": [
+    "node_modules",
+    ".DS_Store",
+    "dist",
+    "dist-ssr",
+    "*.local",
+    "count.txt",
+    ".env",
+    ".nitro",
+    ".tanstack",
+    ".wrangler",
+    ".output",
+    ".vinxi",
+    "public",
+    "todos.json",
+    "stats.html",
+    ".agents",
+    ".claude/settings.local.json",
+    "src/module_bindings",
+    "package-lock.json",
+    "pnpm-lock.yaml",
+    "yarn.lock",
+    "**/*.gen.ts"
+  ]
+}

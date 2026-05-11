@@ -10,7 +10,7 @@ pnpm dev:web                # Vite only (use when SpacetimeDB is already running
 pnpm build                  # Production build
 pnpm test                   # Run tests (vitest run)
 pnpm typecheck              # Type check (tsc --noEmit)
-pnpm check                  # Format (prettier) + lint (eslint) with auto-fix
+pnpm check                  # Format (Oxfmt) + lint (Oxlint) with auto-fix
 pnpm spacetime:start        # Start local SpacetimeDB server (separate terminal, before `pnpm dev`)
 pnpm spacetime:generate     # Regenerate client bindings into src/module_bindings/
 pnpm spacetime:publish      # Publish module to SpacetimeDB maincloud
@@ -48,12 +48,12 @@ Components install to `src/components/ui/`. Theme tokens are in `src/global-styl
 
 ## Conventions
 
-- **Package manager**: pnpm (v10.x). Always use `pnpm` for install/scripts
+- **Package manager**: pnpm (v11.x). Always use `pnpm` for install/scripts
 - **TypeScript**: Strict mode. `@/*` maps to `./src/*`
-- **No semicolons**, single quotes, trailing commas (Prettier config)
-- **Import order**: Enforced by Prettier — third-party → `@/` aliases → relative (with blank-line separation)
-- **Tailwind class sorting**: Enforced by `prettier-plugin-tailwindcss`
-- **Formatting**: Follow `.editorconfig` for indentation and line endings
+- **No semicolons**, single quotes, trailing commas (Oxfmt config)
+- **Formatting/linting**: Oxfmt + Oxlint via `pnpm check`
+- **Tailwind class sorting**: Enforced by Oxfmt `sortTailwindcss`
+- **Import/package sorting**: Enforced by Oxfmt
 - **Comments**: Explain WHY, not WHAT — prefer clearer code over comments that restate logic
 - **Docs research**: Prefer Context7 for up-to-date library documentation before implementing
 
