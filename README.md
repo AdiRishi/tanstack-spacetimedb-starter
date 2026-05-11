@@ -14,7 +14,7 @@
 - **End-to-end type safety** — server schema changes auto-generate client bindings, no manual API layer
 - **[Tailwind CSS v4](https://tailwindcss.com/) + [shadcn/ui](https://ui.shadcn.com/)** — utility-first styling with accessible component primitives
 - **React 19** — latest React with TanStack Query and Router devtools
-- **Strict TypeScript, ESLint, Prettier** — opinionated DX with import and Tailwind class sorting
+- **Strict TypeScript, Oxfmt, Oxlint** — fast DX with import, package, and Tailwind class sorting
 - **[Claude Code](https://claude.ai/code) skills** — AI-assisted development with context-aware guidance
 
 ## Prerequisites

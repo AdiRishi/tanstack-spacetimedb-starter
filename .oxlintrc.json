@@ -1,0 +1,33 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "oxc", "import", "react", "vitest"],
+  "categories": {
+    "correctness": "error"
+  },
+  "rules": {
+    "react/react-in-jsx-scope": "off"
+  },
+  "env": {
+    "builtin": true,
+    "browser": true,
+    "node": true,
+    "vitest": true
+  },
+  "settings": {
+    "react": {
+      "version": "19.2.6"
+    }
+  },
+  "ignorePatterns": [
+    ".nitro",
+    ".tanstack",
+    ".wrangler",
+    ".output",
+    ".vinxi",
+    "dist",
+    "dist-ssr",
+    "public",
+    "src/module_bindings",
+    "**/*.gen.ts"
+  ]
+}
