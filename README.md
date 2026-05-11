@@ -5,7 +5,7 @@
 [![TanStack Start](https://img.shields.io/badge/TanStack_Start-1.x-blue?logo=react)](https://tanstack.com/start)
 [![SpacetimeDB](https://img.shields.io/badge/SpacetimeDB-2.x-purple)](https://spacetimedb.com)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Strict-blue?logo=typescript)](https://www.typescriptlang.org/)
-[![Uses pnpm](https://img.shields.io/badge/pnpm-10.x-orange?logo=pnpm)](https://pnpm.io/)
+[![Uses pnpm](https://img.shields.io/badge/pnpm-11.x-orange?logo=pnpm)](https://pnpm.io/)
 
 ## What's included
 
@@ -19,8 +19,8 @@
 
 ## Prerequisites
 
-- Node.js 20+ (LTS)
-- pnpm 10.x (pinned via `packageManager` in `package.json`)
+- Node.js 22+ (LTS)
+- pnpm 11.x (pinned via `packageManager` in `package.json`)
 - [SpacetimeDB CLI](https://spacetimedb.com/install)
 
 ## Quick start
