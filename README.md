@@ -101,6 +101,12 @@ Changes sync in real-time — no REST endpoints, no GraphQL, no manual cache inv
 | `pnpm spacetime:generate` | Regenerate client bindings              |
 | `pnpm spacetime:publish`  | Publish module to SpacetimeDB maincloud |
 
+## Testing
+
+Frontend tests use Vitest, jsdom, React Testing Library, jest-dom matchers, and user-event.
+SpacetimeDB React hooks are mocked in component tests so `pnpm test` stays fast and does not need a
+running database.
+
 ## Resources
 
 - [TanStack Start docs](https://tanstack.com/start)

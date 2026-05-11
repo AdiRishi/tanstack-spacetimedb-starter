@@ -9,7 +9,7 @@ import { reducers, tables } from '@/module_bindings'
 
 export const Route = createFileRoute('/')({ component: App })
 
-function App() {
+export function App() {
   const { isActive: isConnected } = useSpacetimeDB()
   const addPerson = useReducer(reducers.add)
   const [persons] = useSpacetimeDBQuery(tables.person)
