@@ -66,8 +66,8 @@ export function App() {
           <p className="text-sm text-muted-foreground">No people yet.</p>
         ) : (
           <ul className="space-y-2">
-            {persons.map((person, index) => (
-              <li key={`${person.name}-${index}`} className="rounded-md border px-3 py-2 text-sm">
+            {persons.map((person) => (
+              <li key={person.id} className="rounded-md border px-3 py-2 text-sm">
                 {person.name}
               </li>
             ))}

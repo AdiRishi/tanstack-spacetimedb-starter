@@ -11,6 +11,7 @@ import {
 } from "spacetimedb";
 
 export const Person = __t.object("Person", {
+  id: __t.u64(),
   name: __t.string(),
 });
 export type Person = __Infer<typeof Person>;

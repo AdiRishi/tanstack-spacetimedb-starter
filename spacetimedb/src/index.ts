@@ -1,9 +1,10 @@
-import { schema, t, table } from 'spacetimedb/server'
+import { schema, SenderError, t, table } from 'spacetimedb/server'
 
 const spacetimedb = schema({
   person: table(
     { public: true },
     {
+      id: t.u64().primaryKey().autoInc(),
       name: t.string(),
     },
   ),
@@ -25,7 +26,11 @@ export const onDisconnect = spacetimedb.clientDisconnected((_ctx) => {
 })
 
 export const add = spacetimedb.reducer({ name: t.string() }, (ctx, { name }) => {
-  ctx.db.person.insert({ name })
+  const trimmed = name.trim()
+  if (!trimmed) {
+    throw new SenderError('name must not be empty')
+  }
+  ctx.db.person.insert({ id: 0n, name: trimmed })
 })
 
 export const sayHello = spacetimedb.reducer((ctx) => {

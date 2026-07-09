@@ -5,7 +5,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 const spacetimedb = vi.hoisted(() => ({
   addPerson: vi.fn<(person: { name: string }) => Promise<void>>(() => Promise.resolve()),
   isConnected: true,
-  persons: [] as Array<{ name: string }>,
+  persons: [] as Array<{ id: bigint; name: string }>,
 }))
 
 vi.mock('spacetimedb/tanstack', () => ({
@@ -33,7 +33,10 @@ describe('people route', () => {
   })
 
   it('renders the current connection state and subscribed people', () => {
-    spacetimedb.persons = [{ name: 'Ada Lovelace' }, { name: 'Grace Hopper' }]
+    spacetimedb.persons = [
+      { id: 1n, name: 'Ada Lovelace' },
+      { id: 2n, name: 'Grace Hopper' },
+    ]
 
     render(<App />)
 

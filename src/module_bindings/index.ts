@@ -49,8 +49,12 @@ const tablesSchema = __schema({
   person: __table({
     name: 'person',
     indexes: [
+      { accessor: 'id', name: 'person_id_idx_btree', algorithm: 'btree', columns: [
+        'id',
+      ] },
     ],
     constraints: [
+      { name: 'person_id_key', constraint: 'unique', columns: ['id'] },
     ],
   }, PersonRow),
 });
