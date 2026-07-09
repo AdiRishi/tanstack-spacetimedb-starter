@@ -2,11 +2,13 @@ import { createRouter as createTanStackRouter } from '@tanstack/react-router'
 import { setupRouterSsrQueryIntegration } from '@tanstack/react-router-ssr-query'
 
 import { AppProviders } from '@/lib/app-provider'
-import { queryClient } from '@/lib/spacetimedb-client'
+import { createQueryClient } from '@/lib/spacetimedb-client'
 
 import { routeTree } from './routeTree.gen'
 
 export const getRouter = () => {
+  const queryClient = createQueryClient()
+
   const router = createTanStackRouter({
     routeTree,
     scrollRestoration: true,
