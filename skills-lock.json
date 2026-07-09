@@ -1,15 +1,35 @@
 {
   "version": 1,
   "skills": {
-    "agent-browser": {
-      "source": "vercel-labs/agent-browser",
+    "cli": {
+      "source": "clockworklabs/spacetimedb",
       "sourceType": "github",
-      "computedHash": "2f771f8eb25f9856d2169a4de4766de94e2bdbff999f42c458c8f1e2ca405c03"
+      "skillPath": "skills/cli/SKILL.md",
+      "computedHash": "a9b17e99cd48606c3e6243901ad05af750b3bc3ed1c34fc1b203b3b831e37f58"
+    },
+    "concepts": {
+      "source": "clockworklabs/spacetimedb",
+      "sourceType": "github",
+      "skillPath": "skills/concepts/SKILL.md",
+      "computedHash": "e1cb7bd1a311b6906fd53b208e2ce9d48b87ccf9cf166ef5fdf19e26bd8c20d2"
     },
     "frontend-design": {
       "source": "anthropics/skills",
       "sourceType": "github",
-      "computedHash": "063a0e6448123cd359ad0044cc46b0e490cc7964d45ef4bb9fd842bd2ffbca67"
+      "skillPath": "skills/frontend-design/SKILL.md",
+      "computedHash": "4eabc66183767153e404b39d1b839b1c37f2d82d86f0a0d7e880a579d8d62336"
+    },
+    "typescript-client": {
+      "source": "clockworklabs/spacetimedb",
+      "sourceType": "github",
+      "skillPath": "skills/typescript-client/SKILL.md",
+      "computedHash": "73a36dec0b1a9600b1b44f2efa7944432438573b7d254519d5154a28415071f1"
+    },
+    "typescript-server": {
+      "source": "clockworklabs/spacetimedb",
+      "sourceType": "github",
+      "skillPath": "skills/typescript-server/SKILL.md",
+      "computedHash": "46ad72d81306df660dc73f7c44b2115d2ae48210efaff2fa47e41e910d9ad3d0"
     }
   }
 }
