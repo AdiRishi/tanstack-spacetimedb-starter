@@ -9,14 +9,17 @@ jobs:
   checks:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/setup@v2
+        with:
+          cache: true
+          install: false
 
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v7
         with:
           node-version-file: .node-version
-          cache: pnpm
+          package-manager-cache: false
 
       - run: pnpm install --frozen-lockfile
 
@@ -24,7 +27,7 @@ jobs:
         env:
           SPACETIMEDB_VERSION: 2.8.2
         run: |
-          curl -sSf https://install.spacetimedb.com | sh
+          curl -sSf https://install.spacetimedb.com | sh -s -- --yes
           "$HOME/.local/bin/spacetime" version install "$SPACETIMEDB_VERSION" --yes --use
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 
