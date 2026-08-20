@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "spacetimedb": "^2.8.2"
+    "spacetimedb": "~2.8.2"
   },
   "devDependencies": {
     "typescript": "^7.0.2"

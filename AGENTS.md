@@ -6,7 +6,7 @@ This file provides guidance to AI agents when working with code in this reposito
 
 **Monorepo** (pnpm workspaces): root web client + `spacetimedb/` workspace for the server module.
 
-Full-stack real-time app using **TanStack Start** (React 19 + Vite 7 + Nitro) and **SpacetimeDB** as the database. No REST/GraphQL layer — the client connects directly to SpacetimeDB via WebSocket and data syncs automatically through TanStack Query.
+Full-stack real-time app using **TanStack Start** (React 19 + Vite 8 + Nitro) and **SpacetimeDB** as the database. No REST/GraphQL layer — the client connects directly to SpacetimeDB via WebSocket and data syncs automatically through TanStack Query.
 
 ### Auto-generated files (do not edit)
 

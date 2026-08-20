@@ -1,29 +1,15 @@
 import { schema, SenderError, t, table } from 'spacetimedb/server'
 
-const spacetimedb = schema({
-  person: table(
-    { public: true },
-    {
-      id: t.u64().primaryKey().autoInc(),
-      name: t.string(),
-    },
-  ),
-})
+const person = table(
+  { name: 'person', public: true },
+  {
+    id: t.u64().primaryKey().autoInc(),
+    name: t.string(),
+  },
+)
+
+const spacetimedb = schema({ person })
 export default spacetimedb
-
-export const init = spacetimedb.init((_ctx) => {
-  // Called when the module is initially published
-})
-
-export const onConnect = spacetimedb.clientConnected((_ctx) => {
-  // Called every time a new client connects
-  console.log('Client connected', _ctx.connectionId?.__connection_id__)
-})
-
-export const onDisconnect = spacetimedb.clientDisconnected((_ctx) => {
-  // Called every time a client disconnects
-  console.log('Client disconnected', _ctx.connectionId?.__connection_id__)
-})
 
 export const add = spacetimedb.reducer({ name: t.string() }, (ctx, { name }) => {
   const trimmed = name.trim()

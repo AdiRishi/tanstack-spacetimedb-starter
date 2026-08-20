@@ -20,6 +20,14 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
+      - name: Install SpacetimeDB CLI
+        env:
+          SPACETIMEDB_VERSION: 2.8.2
+        run: |
+          curl -sSf https://install.spacetimedb.com | sh
+          "$HOME/.local/bin/spacetime" version install "$SPACETIMEDB_VERSION" --yes --use
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
       - name: Format check
         run: pnpm format --check
 
@@ -28,6 +36,14 @@ jobs:
 
       - name: Typecheck
         run: pnpm typecheck
+
+      - name: Build SpacetimeDB module
+        run: spacetime build
+
+      - name: Verify generated bindings
+        run: |
+          pnpm spacetime:generate
+          git diff --exit-code -- src/module_bindings
 
       - name: Test
         run: pnpm test

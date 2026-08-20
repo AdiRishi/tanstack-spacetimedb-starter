@@ -4,14 +4,31 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 const spacetimedb = vi.hoisted(() => ({
   addPerson: vi.fn<(person: { name: string }) => Promise<void>>(() => Promise.resolve()),
+  connectionError: undefined as Error | undefined,
   isConnected: true,
+  isLoading: false,
   persons: [] as Array<{ id: bigint; name: string }>,
+  queryError: undefined as Error | undefined,
 }))
 
 vi.mock('spacetimedb/tanstack', () => ({
+  spacetimeDBQuery: () => ({
+    queryKey: ['spacetimedb', 'person', 'SELECT * FROM person'],
+    staleTime: Infinity,
+  }),
   useReducer: () => spacetimedb.addPerson,
-  useSpacetimeDB: () => ({ isActive: spacetimedb.isConnected }),
-  useSpacetimeDBQuery: () => [spacetimedb.persons],
+  useSpacetimeDB: () => ({
+    connectionError: spacetimedb.connectionError,
+    isActive: spacetimedb.isConnected,
+  }),
+  useSpacetimeDBQuery: () => [
+    spacetimedb.persons,
+    spacetimedb.isLoading,
+    {
+      error: spacetimedb.queryError,
+      isError: spacetimedb.queryError !== undefined,
+    },
+  ],
 }))
 
 vi.mock('@/module_bindings', () => ({
@@ -28,8 +45,11 @@ import { App } from './index'
 describe('people route', () => {
   beforeEach(() => {
     spacetimedb.addPerson.mockResolvedValue(undefined)
+    spacetimedb.connectionError = undefined
     spacetimedb.isConnected = true
+    spacetimedb.isLoading = false
     spacetimedb.persons = []
+    spacetimedb.queryError = undefined
   })
 
   it('renders the current connection state and subscribed people', () => {
@@ -73,5 +93,27 @@ describe('people route', () => {
     await user.click(screen.getByRole('button', { name: 'Add' }))
 
     expect(spacetimedb.addPerson).not.toHaveBeenCalled()
+  })
+
+  it('keeps the entered name and reports reducer failures', async () => {
+    const user = userEvent.setup()
+    spacetimedb.addPerson.mockRejectedValueOnce(new Error('name was rejected'))
+
+    render(<App />)
+
+    await user.type(screen.getByLabelText('Name'), 'Ada')
+    await user.click(screen.getByRole('button', { name: 'Add' }))
+
+    expect(await screen.findByRole('alert')).toHaveTextContent('name was rejected')
+    expect(screen.getByLabelText('Name')).toHaveValue('Ada')
+  })
+
+  it('does not report an empty table while the first subscription is loading', () => {
+    spacetimedb.isLoading = true
+
+    render(<App />)
+
+    expect(screen.getByText('Loading people...')).toBeInTheDocument()
+    expect(screen.queryByText('No people yet.')).not.toBeInTheDocument()
   })
 })

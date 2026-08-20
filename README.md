@@ -51,13 +51,13 @@ The app runs at `http://localhost:8080`.
 
 | Layer     | Technology                                  |
 | --------- | ------------------------------------------- |
-| Framework | TanStack Start (React 19 + Vite 7)          |
+| Framework | TanStack Start (React 19 + Vite 8)          |
 | Routing   | TanStack Router (type-safe, file-based)     |
 | Data      | TanStack Query + SpacetimeDB reactive hooks |
 | Database  | SpacetimeDB (TypeScript server modules)     |
 | Styling   | Tailwind CSS v4 + shadcn/ui                 |
 | Testing   | Vitest + Testing Library                    |
-| Language  | TypeScript 5.9 (strict)                     |
+| Language  | TypeScript 7 (strict)                       |
 
 ## Project structure
 
@@ -69,7 +69,7 @@ src/
   components/ui/              → shadcn/ui primitives (button, input, label)
   lib/
     spacetimedb-client.ts     → DB connection and TanStack Query integration
-    app-provider.tsx          → SpacetimeDB + Query provider wrapper
+    spacetimedb-server.ts     → Server-side query used for SSR prefetching
   module_bindings/            → Auto-generated client types (do not edit)
   global-styles/tailwind.css  → Theme tokens — edit this to customize your app
 ```
@@ -81,12 +81,12 @@ Define tables and reducers in `spacetimedb/src/index.ts`. When you run `pnpm dev
 On the client, use the reactive hooks from `spacetimedb/tanstack`:
 
 ```tsx
-const people = useSpacetimeDBQuery(tables.person) // subscribes to live data
+const [people, isLoading] = useSpacetimeDBQuery(tables.person) // subscribes to live data
 const addPerson = useReducer(reducers.add) // calls server reducers
-const { isConnected } = useSpacetimeDB() // connection status
+const { isActive } = useSpacetimeDB() // connection status
 ```
 
-Changes sync in real-time — no REST endpoints, no GraphQL, no manual cache invalidation.
+The route prefetches the public table during server rendering, then the browser hydrates that data and attaches a live subscription. Changes sync in real-time — no REST endpoints, no GraphQL, no manual cache invalidation.
 
 ## Scripts
 
@@ -111,7 +111,7 @@ running database.
 
 - [TanStack Start docs](https://tanstack.com/start)
 - [SpacetimeDB docs](https://spacetimedb.com/docs)
-- [SpacetimeDB TypeScript SDK](https://spacetimedb.com/docs/sdks/typescript)
+- [SpacetimeDB TypeScript SDK](https://spacetimedb.com/docs/clients/typescript)
 - [Tailwind CSS v4](https://tailwindcss.com/)
 - [shadcn/ui](https://ui.shadcn.com/)
 - [TanStack Query](https://tanstack.com/query)
